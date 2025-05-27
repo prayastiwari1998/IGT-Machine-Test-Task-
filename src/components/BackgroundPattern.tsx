@@ -1,7 +1,7 @@
 
 const BackgroundPattern = ({ className = "" }: { className?: string }) => {
   return (
-    <div className={`absolute ${className}`}     style={{top: "6rem",  right:'18rem'}}>
+    <div className={`absolute ${className}`}     style={{top: "11%",  right:'23%'}}>
    <svg xmlns="http://www.w3.org/2000/svg" width="302" height="347" viewBox="0 0 302 347" fill="none">
 <path d="M302 2.81486V4.307H300.047V6.5452H298.746V4.307H296.793V2.81486H298.746V0.57666H300.047V2.81486H302Z" fill="#82C6C6"/>
 <path d="M302 20.7204V22.2125H300.047V24.4507H298.746V22.2125H296.793V20.7204H298.746V18.4822H300.047V20.7204H302Z" fill="#82C6C6"/>
