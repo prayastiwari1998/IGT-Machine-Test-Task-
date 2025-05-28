@@ -1,5 +1,17 @@
+import { useRef } from 'react';
+import PopularCoursesSection from './PopularCourse';
+
 export default function SmartJackpots() {
+  const nextSectionRef = useRef(null);
+
+  const scrollToNextSection = () => {
+    if (nextSectionRef.current) {
+      nextSectionRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
+    <>
     <section className="relative py-24 bg-white overflow-hidden">
       <div className="absolute inset-0 bg-[url('/ui-img-uploads/stefan-stefancik-5p_7M5MP2Iw-unsplash.jpg')] bg-cover bg-no-repeat bg-center opacity-[0.03] pointer-events-none" />
 
@@ -30,11 +42,9 @@ export default function SmartJackpots() {
           ].map((item, idx) => (
             <div
               key={idx}
-              className={`bg-white rounded-2xl shadow-xl px-12 py-12 text-center transform ${idx % 2 === 0 ? 'translate-y-6' : '-translate-y-6'}`}
+              className={`bg-white rounded-2xl shadow-xl px-12 py-12 text-center transform ${idx % 2 === 0 ? 'translate-y-6' : '-translate-y-6'} transition-transform duration-300 hover:shadow-2xl hover:scale-105`}
             >
-              <h3
-                className={`  text-4xl md:text-6xl font-bold mb-5 mt-3   ${item.color}`}
-              >
+              <h3 className={`text-4xl md:text-6xl font-bold mb-5 mt-3 ${item.color}`}>
                 {item.value}
               </h3>
               <p className="text-gray-500 text-sm leading-snug mb-4">
@@ -65,6 +75,22 @@ export default function SmartJackpots() {
           </button>
         </div>
       </div>
+
+
+      <div className="flex justify-center mt-8">
+        <button onClick={scrollToNextSection} className="text-orange-500 hover:text-orange-600 transition" aria-label="Scroll to next section">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+      </div>
+
     </section>
+
+      <div ref={nextSectionRef} className="py-20 px-6 md:px-16 bg-gradient-to-b from-white to-slate-50">
+   
+        <PopularCoursesSection/>
+      </div>
+  </>
   );
 }

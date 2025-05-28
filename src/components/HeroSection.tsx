@@ -1,8 +1,10 @@
 // HeroSection.tsx
 import { Star, Search } from "lucide-react";
 import BackgroundPattern from "./BackgroundPattern";
+import { useState } from "react";
 
 const HeroSection = () => {
+  const [playVideo, setPlayVideo] = useState(false);
   return (
  <div>
  <section className="py-20 lg:py-28 relative overflow-hidden">
@@ -81,23 +83,48 @@ const HeroSection = () => {
         </div>
 
         {/* Right Side Image with Overlay */}
-        <div className="relative ">
-          <img
-            src="/ui-img-uploads/dc59eba1-1841-495b-bd2c-4f59a259f3bb.png"
-            alt="Students learning"
-            className="rounded-2xl shadow-2xl w-96"
-          />
-          {/* Play Button */}
-          {/* <button className="absolute inset-0 m-auto w-14 h-14 bg-white bg-opacity-80 rounded-full shadow-lg flex items-center justify-center">
+<div className="relative w-96 h-[470px]">
+  <div className="relative w-full h-full">
+    {playVideo ? (
+      <video
+        className="rounded-2xl shadow-2xl w-full h-full object-cover"
+        controls
+        autoPlay
+        muted
+        onPause={() => setPlayVideo(false)}
+      >
+        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    ) : (
+      <>
+        <img
+          src="/ui-img-uploads/dc59eba1-1841-495b-bd2c-4f59a259f3bb.png"
+          alt="Students learning"
+          className="rounded-2xl shadow-2xl w-full h-full object-cover"
+        />
+        <button
+          onClick={() => setPlayVideo(true)}
+          className="absolute inset-0 flex items-center justify-center focus:outline-none"
+        >
+          <div className="w-14 h-14 bg-white bg-opacity-80 rounded-full shadow-lg flex items-center justify-center">
             <svg className="w-6 h-6 text-gray-700" fill="currentColor" viewBox="0 0 24 24">
               <path d="M8 5v14l11-7z" />
             </svg>
-          </button> */}
+          </div>
+        </button>
+      </>
+    )}
+  </div>
 
-          {/* Yellow Border */}
-          <div className="absolute -bottom-4  h-full border-2 border-yellow-400 rounded-2xl -z-10" style={{width:"62%", right: "180px"}}></div>
+  {/* Yellow Border */}
+      <div
+        className="absolute -bottom-4 h-full border-2 border-yellow-400 rounded-2xl -z-10"
+        style={{ width: "95%", right: "-30px" }}
+      ></div>
+</div>
 
-        </div>
+
       </div>
     </section>
     </div>

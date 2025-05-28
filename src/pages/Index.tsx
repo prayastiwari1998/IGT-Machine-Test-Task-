@@ -17,7 +17,6 @@ const Index = () => {
       <HeroSection />
 <TutorialsSection/>
 <SmartJackpots/>
-<PopularCoursesSection/>
 <HowItWorksSection/>
 <PricingPlan/>
 <FreeTutorialSection/>
